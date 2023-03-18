@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,3 +40,5 @@ Route::post('/admin/tags', [TagController::class, 'store'])->name("tags.store");
 Route::get('/admin/tags/edit/{tag}', [TagController::class, 'edit'])->name("tags.edit");
 Route::put('/admin/tags/{tag}', [TagController::class, 'update'])->name("tags.update");
 Route::delete('/admin/tags/{tag}', [TagController::class, 'destroy'])->name('tags.destroy');
+
+Route::get('/admin/products', [ProductController::class, 'index'])->name("product.index");
