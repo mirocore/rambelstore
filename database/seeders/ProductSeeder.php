@@ -22,5 +22,13 @@ class ProductSeeder extends Seeder
             "important" => 1,
             "id_category" => 1,
         ]);
+        DB::table("products")->insert([
+            "name" => "Mini Tarta de Frambuesas",
+            "description" => "Masa sableé bretón de vainilla, pastelera y frambuesas frescas. Mantener refrigerado | Puede trasladarse sin inconvenientes en vehículos con aire acondicionado. Máximo 1 hora.",
+            "price" => 1400,
+            "state" => 1,
+            "important" => 0,
+            "id_category" => 1,
+        ]);
     }
 }

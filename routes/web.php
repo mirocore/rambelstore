@@ -42,3 +42,5 @@ Route::put('/admin/tags/{tag}', [TagController::class, 'update'])->name("tags.up
 Route::delete('/admin/tags/{tag}', [TagController::class, 'destroy'])->name('tags.destroy');
 
 Route::get('/admin/products', [ProductController::class, 'index'])->name("product.index");
+Route::get('/admin/products/create', [ProductController::class, 'create'])->name("product.create");
+Route::post('/admin/products', [ProductController::class, 'store'])->name("product.store");
