@@ -7,7 +7,11 @@
         <div
         v-for="product in products"
         :key="product.id"
-        >{{ product.name }}</div>
+        >
+            <span>{{ product.name }}</span>
+            <Link :href="'/admin/products/edit/' + product.id">Editar</Link>
+            <button @click="deleteProduct(product.id)">Borrar</button>
+        </div>
     </div>
 </template>
 
@@ -18,6 +22,17 @@ export default{
     props: ['products'],
     components: {
         Link
+    },
+    methods:{
+        deleteProduct(id){
+            // TODO CONFIRM
+            let rta = confirm("Está seguro?");
+            
+            // ENVIO PETICION
+            if(rta){
+                this.$inertia.delete(`/admin/products/${id}`);
+            }
+        }
     }
 }
 </script>

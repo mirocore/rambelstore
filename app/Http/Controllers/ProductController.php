@@ -40,5 +40,37 @@ class ProductController extends Controller
         return redirect()->route("product.index");
     }
 
+    public function edit(Product $product){
+        // TODAS LAS CATEGORIAS
+        $categories = Category::all();
+
+        // RENDERIZAR VISTA
+        return Inertia::render( "Admin/Products/FormEdit", [
+            "categories" => $categories,
+            "product" => $product
+        ] );
+    }
+
+    public function update(Product $product, Request $request){
+
+        // TODO VALIDACION
+
+        // EDITAR REGISTRO
+        $product->update( $request->input() );
+
+        // VOLVER AL LISTADO
+        return redirect()->route("product.index");
+    }
+
+    public function destroy(Product $product){
+        // TODO VALIDATION
+
+        // ELIMINAR REGISTRO
+        $product->delete();
+
+        // VOLVER
+        return redirect()->route("product.index");
+    }
+
     
 }
