@@ -31,8 +31,9 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
-        // TODO VALIDATION
-        
+        // VALIDATION
+        $request->validate( Product::$rules__create, Product::$messages_create );
+
         // INSERTAR REGISTRO
         $newProduct = Product::create( $request->input() );
 
@@ -53,7 +54,8 @@ class ProductController extends Controller
 
     public function update(Product $product, Request $request){
 
-        // TODO VALIDACION
+        // VALIDATION
+        $request->validate( Product::$rules__edit, Product::$messages_edit );
 
         // EDITAR REGISTRO
         $product->update( $request->input() );

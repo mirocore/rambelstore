@@ -6,6 +6,7 @@
                 type="text"
                 v-model="category.name"
             />
+        {{ $page.props.errors.name }}
         </div>
         <button type="submit">Editar Categoria</button>
     </form>

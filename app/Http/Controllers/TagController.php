@@ -27,7 +27,9 @@ class TagController extends Controller
     }
 
     public function store(Request $request){
-        // TODO VALIDATION
+        
+        // VALIDATION
+        $request->validate(Tag::$rules__create, Tag::$messages__create);
 
         // INGRESAR REGISTRO
         $newTag = Tag::create($request->input());
@@ -43,7 +45,8 @@ class TagController extends Controller
     }
 
     public function update(Tag $tag, Request $request){
-        // TODO VALIDACION
+        // VALIDATION
+        $request->validate(Tag::$rules__edit, Tag::$messages__edit);
 
         // EDITAR REGISTRO
         $tag->update($request->input());

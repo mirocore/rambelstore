@@ -13,6 +13,7 @@
                     id="name"
                     placeholder="Nombre del producto"
                 />
+                <div>{{ $page.props.errors.name }}</div>
             </div>
 
             <!-- DESCRIPCION -->
@@ -29,6 +30,7 @@
                     id="price"
                     v-model="product.price"
                 />
+                <div>{{ $page.props.errors.price }}</div>
             </div>
 
             <!-- PRECIO PROMO -->
@@ -75,6 +77,7 @@
                     <option value="">Seleccionar Categoría</option>
                     <option v-for="category in categories" :value="category.id" :key="category.id">{{ category.name }}</option>
                 </select>
+                <div>{{ $page.props.errors.id_category }}</div>
             </div>
 
             <!-- SUBMIT -->

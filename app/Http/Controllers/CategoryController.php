@@ -26,7 +26,8 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request){
-        // TODO VALIDATION
+        // VALIDATION
+        $request->validate(Category::$rules__create, Category::$message__create);
 
         // CREAR REGISTRO
         $newCategory = Category::create($request->input());
@@ -44,7 +45,8 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request, Category $category){
-        // TODO VALIDATION
+        // VALIDATION
+        $request->validate( Category::$rules__edit, Category::$message__edit );
 
         // EDITAR REGISTRO
         $category->update($request->input());

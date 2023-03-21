@@ -8,6 +8,7 @@
                 type="text"
                 v-model="tag.name"
             />
+            <div>{{ $page.props.errors.name }}</div>
         </div>
         <button type="submit">Crear Tag</button>
     </form>

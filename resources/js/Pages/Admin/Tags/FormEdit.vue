@@ -10,6 +10,7 @@
             />
         </div>
         <button type="submit">Edit Tag</button>
+        <div>{{ $page.props.errors.name }}</div>
     </form>
 </template>
 
