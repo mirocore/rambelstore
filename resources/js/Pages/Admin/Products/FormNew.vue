@@ -1,6 +1,12 @@
 <template>
-    <div>
-        <Link href="admin/products">Volver al listado</Link>
+    <AdminLayout>
+        <template #title>
+            <title>Nuevo Producto</title>
+        </template>
+        <template #content>
+
+        
+        <Link href="/admin/products">Volver al listado</Link>
         <h1>Crear producto</h1>
         <form @submit.prevent="createProduct">
 
@@ -83,17 +89,19 @@
             <!-- SUBMIT -->
             <button type="submit">Crear producto</button>
         </form>
-    </div>
+        </template>
+    </AdminLayout>
 </template>
 
 <script>
 import { Link } from "@inertiajs/vue3";
-
+import AdminLayout from '../../../Layouts/AdminLayout.vue';
 
 export default {
    props:["categories"],
    components:{
-        Link
+        Link,
+        AdminLayout
    },
    data(){
         return{
