@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -47,3 +48,5 @@ Route::post('/admin/products', [ProductController::class, 'store'])->name("produ
 Route::get('/admin/products/edit/{product}', [ProductController::class, 'edit'])->name("product.edit");
 Route::put('/admin/products/{product}', [ProductController::class, 'update'])->name("product.update");
 Route::delete('/admin/products/{product}', [ ProductController::class, "destroy" ])->name("product.destroy");
+
+Route::get('/admin/login', [AuthController::class, 'login'])->name("auth.login");
