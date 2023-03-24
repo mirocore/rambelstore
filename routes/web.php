@@ -49,4 +49,6 @@ Route::get('/admin/products/edit/{product}', [ProductController::class, 'edit'])
 Route::put('/admin/products/{product}', [ProductController::class, 'update'])->name("product.update");
 Route::delete('/admin/products/{product}', [ ProductController::class, "destroy" ])->name("product.destroy");
 
-Route::get('/admin/login', [AuthController::class, 'login'])->name("auth.login");
+Route::get('/login', [AuthController::class, 'login'])->name("login");
+Route::post('/login', [AuthController::class, 'doLogin'])->name("doLogin");
+Route::post ('/logout', [AuthController::class, 'logout'])->name('logout');

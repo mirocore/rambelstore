@@ -18,7 +18,7 @@
                         <template #content>
                             <ul class="text-slate-900 text-xs">
                                 <li class="p-2">Ver perfil</li>
-                                <li class="p-2">Cerrar sesión</li>
+                                <li class="p-2" @click="cerrarSesion">Cerrar sesión</li>
                             </ul>
                         </template>
                     </Dropdown>
@@ -45,8 +45,12 @@ export default{
         Dropdown,
         Link
     },
-    created(){
-       console.log(this.$page.props.auth.user); 
+    methods: {
+        cerrarSesion(){
+            // TODO CONFIRM
+
+            this.$inertia.post("/logout");
+        }
     }
 }
 </script>

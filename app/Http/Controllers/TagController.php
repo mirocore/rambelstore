@@ -8,6 +8,12 @@ use Inertia\Inertia;
 
 class TagController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
 
         // BUSCO TODOS LOS REGISTROS
