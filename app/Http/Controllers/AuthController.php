@@ -7,8 +7,6 @@ use Inertia\Inertia;
 
 class AuthController extends Controller
 {
-
-
     
     public function login(){
         return Inertia::render( "Auth2/Login" );
@@ -20,7 +18,10 @@ class AuthController extends Controller
 
         // INTENTO LOGUEAR
         if(!auth()->attempt( $request->only('email', 'password'))){
-            return back();
+            return back()->with('message', [
+                "estilo" => "Error",
+                "text"   => "Credenciales incorrectas"
+            ]);
         }
         
         return redirect()->route("product.index");

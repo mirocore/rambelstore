@@ -39,7 +39,10 @@ class CategoryController extends Controller
         $newCategory = Category::create($request->input());
 
         // VOLVER AL LISTADO
-        return redirect()->route("category.index");
+        return redirect()->route("category.index")->with('message', [
+            "estilo" => "Success",
+            "text"   => "Categoría creada"
+        ]);
     }
 
     public function edit(Category $category){
@@ -58,7 +61,10 @@ class CategoryController extends Controller
         $category->update($request->input());
 
         // VOLVER AL LISTADO
-        return redirect()->route("category.index");
+        return redirect()->route("category.index")->with('message', [
+            "estilo" => "Success",
+            "text"   => "Categoría editada"
+        ]);
     }
 
     public function destroy(Category $category){
@@ -68,6 +74,9 @@ class CategoryController extends Controller
         $category->delete();
 
         // REDIRIGIR
-        return redirect()->route("category.index");
+        return redirect()->route("category.index")->with('message', [
+            "estilo" => "Success",
+            "text"   => "Categoría eliminada"
+        ]);
     }
 }

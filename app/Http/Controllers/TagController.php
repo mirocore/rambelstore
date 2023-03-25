@@ -41,7 +41,10 @@ class TagController extends Controller
         $newTag = Tag::create($request->input());
 
         // VUELVO AL LISTADO
-        return redirect()->route('tags.index');
+        return redirect()->route('tags.index')->with('message', [
+            "estilo" => "Success",
+            "text"   => "Tag creado"
+        ]);
     }
 
     public function edit(Tag $tag){
@@ -58,7 +61,10 @@ class TagController extends Controller
         $tag->update($request->input());
 
         // VUELVO AL LISTADO
-        return redirect()->route('tags.index');
+        return redirect()->route('tags.index')->with('message', [
+            "estilo" => "Success",
+            "text"   => "Tag editado"
+        ]);
     }
 
     public function destroy(Tag $tag){
@@ -68,6 +74,9 @@ class TagController extends Controller
         $tag->delete();
 
         // VUELVO AL LISTADO
-        return redirect()->route('tags.index');
+        return redirect()->route('tags.index')->with('message', [
+            "estilo" => "Success",
+            "text"   => "Tag eliminado"
+        ]);
     }
 }

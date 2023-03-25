@@ -27,8 +27,18 @@
                     <Link href="/admin/login" class="bg-blue-600 text-xs py-1 px-3 hover:bg-blue-800 transition-all">Login</Link>
                 </div>
             </div>
-            <slot name="content">
-            </slot>
+
+            <div class="bg-slate-50 p-5">
+                <Transition>
+                    <div v-if="$page.props.flash.message">
+                        <FlashMessage
+                            :estilo="$page.props.flash.message.estilo">{{ $page.props.flash.message.text }}</FlashMessage>
+                    </div>
+                </Transition>
+                
+                <slot name="content">
+                </slot>
+            </div>
         </div>
     </div>
 </template>
@@ -37,13 +47,16 @@
 import { Head, Link } from '@inertiajs/vue3';
 import Sidebar from '../Components/Otros/Sidebar.vue';
 import Dropdown from '@/Components/Dropdown.vue';
+import FlashMessage from '@/Components/Otros/FlashMessage.vue';
+
 
 export default{
     components: {
         Head,
         Sidebar,
         Dropdown,
-        Link
+        Link,
+        FlashMessage
     },
     methods: {
         cerrarSesion(){
@@ -54,3 +67,16 @@ export default{
     }
 }
 </script>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: all .5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  right:-3rem
+}
+</style>

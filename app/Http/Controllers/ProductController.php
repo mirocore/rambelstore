@@ -44,7 +44,10 @@ class ProductController extends Controller
         $newProduct = Product::create( $request->input() );
 
         // VOLVER AL LISTADO
-        return redirect()->route("product.index");
+        return redirect()->route("product.index")->with('message', [
+            "estilo" => "Success",
+            "text"   => "Producto creado"
+        ]);
     }
 
     public function edit(Product $product){
@@ -67,7 +70,10 @@ class ProductController extends Controller
         $product->update( $request->input() );
 
         // VOLVER AL LISTADO
-        return redirect()->route("product.index");
+        return redirect()->route("product.index")->with('message', [
+            "estilo" => "Success",
+            "text"   => "Producto Editado"
+        ]);
     }
 
     public function destroy(Product $product){
@@ -77,7 +83,10 @@ class ProductController extends Controller
         $product->delete();
 
         // VOLVER
-        return redirect()->route("product.index");
+        return redirect()->route("product.index")->with('message', [
+            "estilo" => "Success",
+            "text"   => "Producto eliminado"
+        ]);
     }
 
     

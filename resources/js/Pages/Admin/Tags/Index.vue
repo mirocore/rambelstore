@@ -1,14 +1,19 @@
 <template>
-    <Link href="/admin/tags/create">Nuevo</Link>
-    <div
-    v-for="tag in tags"
-    :key="tag.id"
-    class="flex items-center gap-10"
-    >
-        <span>{{ tag.name }}</span>
-        <Link :href="`/admin/tags/edit/${tag.id}`">Editar</Link>
-        <button @click="deleteTag(tag.id)">Borrar</button>
-    </div>
+    <AdminLayout>
+        <template #content>
+
+            <Link href="/admin/tags/create">Nuevo</Link>
+            <div
+            v-for="tag in tags"
+            :key="tag.id"
+            class="flex items-center gap-10"
+            >
+            <span>{{ tag.name }}</span>
+            <Link :href="`/admin/tags/edit/${tag.id}`">Editar</Link>
+            <button @click="deleteTag(tag.id)">Borrar</button>
+            </div>
+        </template>
+    </AdminLayout>
 </template>
 
 <script>
@@ -18,9 +23,9 @@ import AdminLayout from '../../../Layouts/AdminLayout.vue';
 export default{
     props:["tags"],
     components:{
-        Link,
-        AdminLayout
-    },
+    Link,
+    AdminLayout,
+},
     methods:{
         deleteTag(id){
            // TODO VALIDATION
