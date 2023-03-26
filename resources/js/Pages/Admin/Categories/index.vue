@@ -2,21 +2,26 @@
     <AdminLayout>
     
     <template #title>
-        <title>Listado de categorías</title>
+        <title>Categorías</title>
     </template>
 
+    <template #tituloh1>
+            Listado de categorías
+        </template>
+
     <template #content>
-        <p>Categorias</p>
-        <Link href="/admin/categories/create">Nuevo</Link>
-        <div
-            v-for="cat in categories"
-            :key="cat.id"
-            class="flex gap-5"
-            >
-                <p>{{ cat.name }}</p>
-                <Link :href="`/admin/categories/edit/${cat.id}`">Editar</Link>
-                <button @click="deleteCat(cat.id)">Borrar</button>
+        <div class="mb-5 flex justify-end items-center">
+                <Link href="/admin/categories/create" class="text-xs font-bold uppercase bg-green-500 text-white hover:bg-green-800 transition-all py-2 px-3 inline-block">Nueva Categoría</Link>
         </div>
+        <div class="bg-white">
+            <CategoryItem
+                    v-for="category in categories"
+                    :key="category.id"
+                    :category="category"
+                >
+            </CategoryItem>
+        </div>
+        
     </template>
 
     </AdminLayout>
@@ -24,13 +29,15 @@
 
 <script>
 import { Link } from '@inertiajs/vue3';
+import CategoryItem from '../../../Components/Otros/CategoryItem.vue';
 import AdminLayout from '../../../Layouts/AdminLayout.vue';
 
 export default{
     props: ['categories'],
     components: {
         Link,
-        AdminLayout
+        AdminLayout,
+        CategoryItem
     },
     methods: {
         deleteCat(id){

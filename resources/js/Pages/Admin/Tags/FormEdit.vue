@@ -23,7 +23,7 @@
                         v-model="tag.name"
                         class="w-full py-1"
                     />
-                    <div>{{ $page.props.errors.name }}</div>
+                    <span v-if="$page.props.errors.name" class="text-red-800 bg-red-300 w-full py-2 text-xs mt-1 block px-2">{{ $page.props.errors.name }}</span>
                 </div>
                 <button type="submit" class="bg-indigo-800 hover:bg-indigo-900 transition-all text-white py-2 uppercase">Editar Tag</button>
             </form>

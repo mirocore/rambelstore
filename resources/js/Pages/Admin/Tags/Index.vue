@@ -1,5 +1,10 @@
 <template>
     <AdminLayout>
+
+        <template #title>
+            <title>Tags</title>
+        </template>
+
         <template #tituloh1>
             Listado de Tags
         </template>
