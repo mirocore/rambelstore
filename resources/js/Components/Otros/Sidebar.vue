@@ -1,5 +1,5 @@
 <template>
-    <div  class="col-span-2 hidden md:flex flex-col gap-4 bg-slate-200 overflow-y-auto">
+    <div  class="col-span-2 hidden md:flex flex-col gap-4 bg-slate-300 overflow-y-auto">
         
         <div class="p-5">
             <p>Rambel Store</p>

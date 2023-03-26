@@ -1,37 +1,39 @@
 <template>
     <AdminLayout>
-        <template #content>
+        <template #tituloh1>
+            Listado de Tags
+        </template>
 
-            <Link href="/admin/tags/create">Nuevo</Link>
-            <div
-            v-for="tag in tags"
-            :key="tag.id"
-            class="flex items-center gap-10"
-            >
-            <span>{{ tag.name }}</span>
-            <Link :href="`/admin/tags/edit/${tag.id}`">Editar</Link>
-            <button @click="deleteTag(tag.id)">Borrar</button>
+        <template #content>
+            <div class="mb-5 flex justify-end items-center">
+                <Link href="/admin/tags/create" class="text-xs font-bold uppercase bg-green-500 text-white hover:bg-green-800 transition-all py-2 px-3 inline-block">Nuevo Tag</Link>
+            </div>
+            <div class="bg-white">
+                <TagItem
+                    v-for="tag in tags"
+                    :key="tag.id"
+                    :tag="tag"
+                >
+                </TagItem>
             </div>
         </template>
+
+
     </AdminLayout>
 </template>
 
 <script>
 import { Link } from '@inertiajs/vue3';
+import TagItem from '../../../Components/Otros/TagItem.vue';
 import AdminLayout from '../../../Layouts/AdminLayout.vue';
+
 
 export default{
     props:["tags"],
     components:{
-    Link,
-    AdminLayout,
-},
-    methods:{
-        deleteTag(id){
-           // TODO VALIDATION
-           
-           this.$inertia.delete(`/admin/tags/${id}`);
-        }
-    }
+        Link,
+        AdminLayout,
+        TagItem
+    },
 }
 </script>

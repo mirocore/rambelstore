@@ -6,7 +6,7 @@
     <div class="md:grid grid-cols-12 h-screen">
         <Sidebar/>
 
-        <div class="col-span-12 md:col-span-10">
+        <div class="col-span-12 md:col-span-10  bg-indigo-100  min-h-full overscroll-y-auto">
             <div class="bg-slate-600 text-white p-3 flex justify-end items-center gap-2 cursor-pointer">
                 <div v-if="$page.props.auth.user" class="text-xs flex items-center gap-2">Ramiro Belcore
                     <Dropdown>
@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div class="bg-slate-50 p-5">
+            <div class="p-5">
                 <Transition>
                     <div v-if="$page.props.flash.message">
                         <FlashMessage
@@ -36,6 +36,10 @@
                     </div>
                 </Transition>
                 
+                <h1 class="text-2xl font-bold mt-5 text-slate-500 border-b border-gray-200 pb-2">
+                    <slot name="tituloh1"></slot>
+                </h1>
+
                 <slot name="content">
                 </slot>
             </div>

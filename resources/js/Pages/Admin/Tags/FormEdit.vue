@@ -3,19 +3,29 @@
         <template #title>
             <title>Editar Tag</title>
         </template>
+        <template #tituloh1>
+            Editar datos del tag
+        </template>
         <template #content>
-            <Link href="/admin/tags">Volver al listado</Link>
+            <Link href="/admin/tags" class="text-gray-600  hover-text-gray-800 mb-5 inline-flex gap-2 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5" />
+                </svg>
+            Volver al listado</Link>
             
-            <form @submit.prevent="editTag">
+            <form @submit.prevent="editTag" class="bg-white shadow p-5 flex flex-col gap-3">
                 <div>
-                    <label>Nombre</label>
+                    <label for="name" class="text-xs block mb-1">Nombre</label>
                     <input 
-                    type="text"
-                    v-model="tag.name"
+                        type="text"
+                        id="name"
+                        placeholder="Nombre del tag"
+                        v-model="tag.name"
+                        class="w-full py-1"
                     />
+                    <div>{{ $page.props.errors.name }}</div>
                 </div>
-                <button type="submit">Edit Tag</button>
-                <div>{{ $page.props.errors.name }}</div>
+                <button type="submit" class="bg-indigo-800 hover:bg-indigo-900 transition-all text-white py-2 uppercase">Editar Tag</button>
             </form>
         </template>
 
