@@ -24,5 +24,8 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             'name' => 'panes'
         ]);
+        DB::table('categories')->insert([
+            'name' => 'productos secos'
+        ]);
     }
 }

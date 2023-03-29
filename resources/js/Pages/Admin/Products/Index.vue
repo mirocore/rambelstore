@@ -1,22 +1,24 @@
 <template>
     <AdminLayout>
         <template #title>
-            <title>Listado Productos</title>
+            <title>Productos</title>
+        </template>
+
+        <template #tituloh1>
+            Listado de Productos
         </template>
         <template #content>
-            <h1>Productos</h1>
 
-            <Link href="/admin/products/create">Nuevo</Link>
+            <div class="mb-5 flex justify-end items-center">
+                <Link href="/admin/products/create" class="text-xs font-bold uppercase bg-green-500 text-white hover:bg-green-800 transition-all py-2 px-3 inline-block">Producto nuevo</Link>
+            </div>
 
             <div>
-                <div
-                v-for="product in products"
-                :key="product.id"
-                >
-                    <span>{{ product.name }}</span>
-                    <Link :href="'/admin/products/edit/' + product.id">Editar</Link>
-                    <button @click="deleteProduct(product.id)">Borrar</button>
-                </div>
+                <ProductItem
+                    v-for="product in products"
+                    :key="product.id"
+                    :product="product"
+                />
             </div>
         </template>
         
@@ -25,6 +27,7 @@
 
 <script>
 import { Link } from '@inertiajs/vue3';
+import ProductItem from '../../../Components/Otros/ProductItem.vue';
 import AdminLayout from '../../../Layouts/AdminLayout.vue';
 
 
@@ -32,18 +35,8 @@ export default{
     props: ['products'],
     components: {
         Link,
-        AdminLayout
+        AdminLayout,
+        ProductItem
     },
-    methods:{
-        deleteProduct(id){
-            // TODO CONFIRM
-            let rta = confirm("Está seguro?");
-            
-            // ENVIO PETICION
-            if(rta){
-                this.$inertia.delete(`/admin/products/${id}`);
-            }
-        }
-    }
 }
 </script>

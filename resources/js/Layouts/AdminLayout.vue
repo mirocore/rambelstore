@@ -3,11 +3,11 @@
         <slot name="title"></slot>
     </Head>
 
-    <div class="md:grid grid-cols-12 h-screen">
+    <div class="md:grid grid-cols-12">
         <Sidebar/>
 
-        <div class="col-span-12 md:col-span-10  bg-indigo-100  min-h-full overscroll-y-auto">
-            <div class="bg-slate-600 text-white p-3 flex justify-end items-center gap-2 cursor-pointer">
+        <div class="col-span-12 md:col-span-10  bg-indigo-100">
+            <div class="bg-slate-600 text-white p-3 flex justify-end items-center gap-2 cursor-pointer header-content">
                 <div v-if="$page.props.auth.user" class="text-xs flex items-center gap-2">Ramiro Belcore
                     <Dropdown>
                         <template #trigger>
@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div class="p-5">
+            <div class="p-5 overflow-y-auto espacio-contenido">
                 <Transition>
                     <div v-if="$page.props.flash.message">
                         <FlashMessage
@@ -73,6 +73,15 @@ export default{
 </script>
 
 <style scoped>
+
+.header-content{
+    height:50px;
+}
+
+.espacio-contenido{
+    height: calc(100vh - 50px);
+}
+
 .v-enter-active,
 .v-leave-active {
   transition: all .5s ease;
