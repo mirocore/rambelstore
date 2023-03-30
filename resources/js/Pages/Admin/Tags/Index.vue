@@ -15,12 +15,15 @@
             </div>
             <div class="bg-white">
                 <TagItem
-                    v-for="tag in tags"
+                    v-for="tag in tags.data"
                     :key="tag.id"
                     :tag="tag"
                 >
                 </TagItem>
             </div>
+            <Pagination 
+                :products="tags"
+            />
         </template>
 
 
@@ -29,6 +32,7 @@
 
 <script>
 import { Link } from '@inertiajs/vue3';
+import Pagination from '../../../Components/Otros/Pagination.vue';
 import TagItem from '../../../Components/Otros/TagItem.vue';
 import AdminLayout from '../../../Layouts/AdminLayout.vue';
 
@@ -38,7 +42,8 @@ export default{
     components:{
         Link,
         AdminLayout,
-        TagItem
+        TagItem,
+        Pagination
     },
 }
 </script>

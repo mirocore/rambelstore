@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index(){
 
         // LISTADO DE CATEGORIAS
-        $categories = Category::latest()->get();
+        $categories = Category::latest()->paginate(6);
 
         // RENDERIZAR
         return Inertia::render('Admin/Categories/index', [

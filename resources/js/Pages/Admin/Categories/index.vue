@@ -15,12 +15,15 @@
         </div>
         <div class="bg-white">
             <CategoryItem
-                    v-for="category in categories"
+                    v-for="category in categories.data"
                     :key="category.id"
                     :category="category"
                 >
             </CategoryItem>
         </div>
+        <Pagination 
+            :products="categories"
+        />
         
     </template>
 
@@ -30,6 +33,7 @@
 <script>
 import { Link } from '@inertiajs/vue3';
 import CategoryItem from '../../../Components/Otros/CategoryItem.vue';
+import Pagination from '../../../Components/Otros/Pagination.vue';
 import AdminLayout from '../../../Layouts/AdminLayout.vue';
 
 export default{
@@ -37,7 +41,8 @@ export default{
     components: {
         Link,
         AdminLayout,
-        CategoryItem
+        CategoryItem,
+        Pagination
     },
     methods: {
         deleteCat(id){

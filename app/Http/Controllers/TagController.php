@@ -17,7 +17,7 @@ class TagController extends Controller
     public function index(){
 
         // BUSCO TODOS LOS REGISTROS
-        $tags = Tag::latest()->get();
+        $tags = Tag::latest()->paginate(6);
 
         // RENDERIZO LA VISTA
         return Inertia::render('Admin/Tags/Index', [

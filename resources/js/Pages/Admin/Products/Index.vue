@@ -15,11 +15,15 @@
 
             <div>
                 <ProductItem
-                    v-for="product in products"
+                    v-for="product in products.data"
                     :key="product.id"
                     :product="product"
                 />
             </div>
+            <Pagination 
+                :products="$page.props.products"
+            />
+
         </template>
         
     </AdminLayout>
@@ -27,8 +31,9 @@
 
 <script>
 import { Link } from '@inertiajs/vue3';
-import ProductItem from '../../../Components/Otros/ProductItem.vue';
 import AdminLayout from '../../../Layouts/AdminLayout.vue';
+import Pagination from '../../../Components/Otros/Pagination.vue';
+import ProductItem from '../../../Components/Otros/ProductItem.vue';
 
 
 export default{
@@ -36,7 +41,11 @@ export default{
     components: {
         Link,
         AdminLayout,
-        ProductItem
+        ProductItem,
+        Pagination
     },
+    created(){
+        console.log(this.$page.props)
+    }
 }
 </script>
