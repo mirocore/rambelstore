@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -52,3 +53,5 @@ Route::delete('/admin/products/{product}', [ ProductController::class, "destroy"
 Route::get('/login', [AuthController::class, 'login'])->name("login");
 Route::post('/login', [AuthController::class, 'doLogin'])->name("doLogin");
 Route::post ('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get( '/admin/profile/{user}', [UserController::class, 'showProfile'] )->name("user.showProfile");

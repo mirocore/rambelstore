@@ -8,7 +8,7 @@
 
         <div class="col-span-12 md:col-span-10  bg-indigo-100">
             <div class="bg-slate-600 text-white p-3 flex justify-end items-center gap-2 cursor-pointer header-content">
-                <div v-if="$page.props.auth.user" class="text-xs flex items-center gap-2">Ramiro Belcore
+                <div v-if="$page.props.auth.user" class="text-xs flex items-center gap-2">{{ $page.props.auth.user.name }}
                     <Dropdown>
                         <template #trigger>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -17,7 +17,9 @@
                         </template>
                         <template #content>
                             <ul class="text-slate-900 text-xs">
-                                <li class="p-2">Ver perfil</li>
+                                <li class="p-2 capitalize">
+                                    <Link  :href="`/admin/profile/${ $page.props.auth.user.id }`">Ver Perfil</Link>
+                                </li>
                                 <li class="p-2" @click="cerrarSesion">Cerrar sesión</li>
                             </ul>
                         </template>
