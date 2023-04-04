@@ -27,28 +27,39 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 }); */
+/* Route::prefix('logos')->group(function () {
+ */
+Route::prefix('admin')->group(function (){
 
-Route::get('/admin/categories', [CategoryController::class, 'index'])->name("category.index");
-Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name("category.create");
-Route::post('/admin/categories', [CategoryController::class, 'store'])->name("category.store");
-Route::get('/admin/categories/edit/{category}', [CategoryController::class, 'edit'])->name("category.edit");
-Route::put('/admin/categories/{category}', [CategoryController::class, 'update'])->name("category.update");
-Route::delete('/admin/categories/{category}', [CategoryController::class, 'destroy'])->name("category.destroy");
 
-Route::get('/admin/tags', [TagController::class, 'index'])->name("tags.index");
-Route::get('/admin/tags/create', [TagController::class, 'create'])->name("tags.create");
-Route::post('/admin/tags', [TagController::class, 'store'])->name("tags.store");
-Route::get('/admin/tags/edit/{tag}', [TagController::class, 'edit'])->name("tags.edit");
-Route::put('/admin/tags/{tag}', [TagController::class, 'update'])->name("tags.update");
-Route::delete('/admin/tags/{tag}', [TagController::class, 'destroy'])->name('tags.destroy');
+    Route::prefix('categories')->group(function(){
+        Route::get('/', [CategoryController::class, 'index'])->name("category.index");
+        Route::post('/', [CategoryController::class, 'store'])->name("category.store");
+        Route::get('/create', [CategoryController::class, 'create'])->name("category.create");
+        Route::get('/edit/{category}', [CategoryController::class, 'edit'])->name("category.edit");
+        Route::delete('/{category}', [CategoryController::class, 'destroy'])->name("category.destroy");
+        Route::put('/{category}', [CategoryController::class, 'update'])->name("category.update");
+    });
 
-Route::get('/admin/products', [ProductController::class, 'index'])->name("product.index");
-Route::get('/admin/products/create', [ProductController::class, 'create'])->name("product.create");
-Route::post('/admin/products', [ProductController::class, 'store'])->name("product.store");
-Route::get('/admin/products/edit/{product}', [ProductController::class, 'edit'])->name("product.edit");
-Route::put('/admin/products/{product}', [ProductController::class, 'update'])->name("product.update");
-Route::delete('/admin/products/{product}', [ ProductController::class, "destroy" ])->name("product.destroy");
+    Route::prefix('tags')->group(function(){
+        Route::get('/', [TagController::class, 'index'])->name("tags.index");
+        Route::post('/', [TagController::class, 'store'])->name("tags.store");
+        Route::get('/create', [TagController::class, 'create'])->name("tags.create"); 
+        Route::get('/edit/{tag}', [TagController::class, 'edit'])->name("tags.edit");
+        Route::put('/{tag}', [TagController::class, 'update'])->name("tags.update");
+        Route::delete('/{tag}', [TagController::class, 'destroy'])->name('tags.destroy');
+    });
 
-Route::get('/login', [AuthController::class, 'login'])->name("login");
-Route::post('/login', [AuthController::class, 'doLogin'])->name("doLogin");
-Route::post ('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::prefix('products')->group(function(){
+        Route::get('/', [ProductController::class, 'index'])->name("product.index");
+        Route::post('/', [ProductController::class, 'store'])->name("product.store");
+        Route::get('/create', [ProductController::class, 'create'])->name("product.create");
+        Route::get('/edit/{product}', [ProductController::class, 'edit'])->name("product.edit");
+        Route::put('/{product}', [ProductController::class, 'update'])->name("product.update");
+        Route::delete('/{product}', [ ProductController::class, "destroy" ])->name("product.destroy");
+    });
+});
+
+    Route::get('/login', [AuthController::class, 'login'])->name("login");
+    Route::post('/login', [AuthController::class, 'doLogin'])->name("doLogin");
+    Route::post ('/logout', [AuthController::class, 'logout'])->name('logout');
